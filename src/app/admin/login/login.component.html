@@ -1,0 +1,24 @@
+<div [ngStyle]="{width:'350px',margin:'50px auto'}">
+ <md-card>
+   <md-card-title>Login Form</md-card-title>
+   <md-card-content>
+    <p>{{message}}</p>
+    <form>
+      <table style="width: 100%" cellspacing="0">
+        <tr>
+          <!-- <td><md-input placeholder="First Name" style="width: 100%"></md-input></td> -->
+          <!-- <td><md-input placeholder="Last Name" style="width: 100%"></md-input></td> -->
+        </tr>
+        <tr>
+          <!-- <td><md-input placeholder="Password" style="width: 100%"></md-input></td> -->
+          <!-- <td><md-input placeholder="Confirm Password" style="width: 100%"></md-input></td> -->
+        </tr>
+      </table>
+    </form>
+  </md-card-content>
+  <md-card-actions>
+    <!-- (click)="openDialog()" -->
+    <button md-raised-button class="md-raised-button md-primary" (click)="login()">Login</button>
+  </md-card-actions>
+</md-card>
+</div>

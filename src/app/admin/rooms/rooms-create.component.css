@@ -1,0 +1,26 @@
+form{
+	min-width: 437px;
+}
+.dropdown-menu md-card{
+	padding: 0px;
+}
+.dropdown-menu md-list{
+	padding: 0px;
+}
+.dropdown-menu md-list md-list-item{
+	width: 100% !important;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  height: 35px !important;
+}
+.dropdown-menu md-list md-list-item .md-list-item{
+  height: 90px !important;
+}
+.dropdown-menu{
+	position: absolute;
+	width: 100%;
+	z-index: 2;
+}
+.dropdown{
+	position: relative;
+}

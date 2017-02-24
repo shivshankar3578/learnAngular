@@ -1,0 +1,20 @@
+
+    <md-toolbar color="accent">
+      <button (click)="closeSideBar()"  md-icon-button class="md-icon-button" aria-label="Settings">
+        <md-icon md-font-set="material-icons">menu</md-icon>
+      </button>
+      <span>App Wrapper </span>
+      <span flex></span>
+      <button md-icon-button class="md-icon-button" aria-label="Favorite">
+        <md-icon md-font-set="material-icons">favorite</md-icon>
+      </button>
+      <button md-icon-button [md-menu-trigger-for]="menu">
+   <md-icon>more_vert</md-icon>
+</button>
+      <md-menu #menu="mdMenu" x-position="before">
+        <button md-menu-item> Refresh </button>
+        <button md-menu-item> Settings </button>
+        <button md-menu-item> Help </button>
+        <button md-menu-item (click)="logout()" *ngIf="authService.isLoggedIn"> Sign Out </button>
+    </md-menu>
+    </md-toolbar>

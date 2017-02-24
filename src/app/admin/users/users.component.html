@@ -1,0 +1,16 @@
+<md-card>
+   	<md-card-title>
+   	<section layout="row" layout-sm="column" layout-align="center right" layout-wrap>
+   	<div layout="row" layout-align="start center" flex>
+    Users Master
+    <span flex></span>
+  </div>
+  <button [routerLink]="['list']" md-raised-button class="md-primary"><md-icon class="md-24">list</md-icon> List</button>
+  <button [routerLink]="['create']" md-raised-button class="md-primary"><md-icon class="md-24">add</md-icon> Create</button>
+
+   	</section>
+ 		</md-card-title>  
+   	<md-card-content>
+   		<router-outlet></router-outlet>
+ 		</md-card-content>
+</md-card>

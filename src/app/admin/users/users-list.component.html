@@ -1,0 +1,33 @@
+<md-card>
+           <md-card-title>{{title}}</md-card-title>   
+           <md-card-content>
+<table class="md-data-table">
+  <thead>
+  <tr>
+    <th class="md-text-cell">First Name</th>
+    <th class="md-text-cell">Last Name</th>
+    <th class="md-text-cell">Email</th>
+    <th>Mobile</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of list">
+    <td class="md-text-cell">User</td>
+    <td class="md-text-cell">One</td>
+    <td class="md-text-cell">use@gmail.com</td>
+    <td>1234567893</td>
+    <td>
+    <button md-icon-button [md-menu-trigger-for]="menu">
+   <md-icon>more_vert</md-icon>
+</button>
+      <md-menu #menu="mdMenu" x-position="before">
+        <button [routerLink]="['../edit']" md-menu-item><md-icon>edit</md-icon> Edit </button>
+        <button md-menu-item><md-icon>delete</md-icon> Delete </button>
+    </md-menu>
+    </td>
+  </tr>
+
+  </tbody>
+</table>
+</md-card-content>
+</md-card>

@@ -1,0 +1,17 @@
+<app-nav-bar (toggelSideBar)="toggelLeftSideBar($event)"></app-nav-bar>
+<md-sidenav-container>
+  <md-sidenav [opened]="leftSideBar" mode="side" layout-padding>
+
+  <app-side-bar></app-side-bar>
+  </md-sidenav>
+
+  <md-sidenav #right align="end" layout-padding>
+    <h2>Right Sidenav.</h2>
+    <button md-raised-button class="md-raised md-primary" (click)="right.close()">Close</button>
+  </md-sidenav>
+    <router-outlet></router-outlet>
+
+    <!-- <md-divider></md-divider>
+    <button md-raised-button class="md-raised md-primary" (click)="left.toggle()">Toggle Left Sidenav</button>
+    <button md-raised-button class="md-raised md-primary" (click)="right.toggle()">Toggle Right Sidenav</button> -->
+</md-sidenav-container>

@@ -1,0 +1,56 @@
+<form [formGroup]="roomForm" novalidate autocomplete="false"  (ngSubmit)="onSubmit(roomForm.value, roomForm.valid)">
+	<md-card>
+		<md-card-title>Room Form</md-card-title>
+		<md-card-content>
+			<p>{{message}}</p>
+			<table style="width: 100%" cellspacing="0">
+				<tr>
+					<td>
+						<div class="dropdown" (mouseleave)="dropdown = false;" (mouseenter)="(zone.focused)?dropdown = true:''">
+							<md-input-container>
+							   <input mdInput formControlName="zone" #zone placeholder="Select Zone" ngModel>
+							</md-input-container>
+
+							<div class="dropdown-menu">
+								<md-card *ngIf="(dropdown || zone.focused)">
+									<md-list>
+										<md-list-item (click)="selectZone(zone, item)" *ngFor="let item of zones | async">{{item.name  + ' <' +item.key+'>'}}</md-list-item>
+									</md-list>
+								</md-card>
+							</div>
+						</div>
+						<small [hidden]="roomForm.controls.zone.valid || (roomForm.controls.name.pristine && !submitted)">
+							Name is required (minimum 5 characters).
+						</small>
+					</td>
+				</tr><tr>
+				<td>
+					<md-input-container>
+						<input mdInput formControlName="name"  placeholder="Room Name"  ngModel>
+					</md-input-container>
+					<small [hidden]="roomForm.controls.name.valid || (roomForm.controls.name.pristine && !submitted)">
+						Name is required (minimum 5 characters).
+					</small>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<md-input-container>
+						<input mdInput formControlName="users_limit"  placeholder="Users Limit"  ngModel>
+					</md-input-container>
+
+					<small [hidden]="roomForm.controls.users_limit.valid || (roomForm.controls.name.pristine && !submitted)">
+						Users limit is required.
+					</small>
+				</td>
+			</tr>
+		</table>
+	</md-card-content>
+	<md-card-actions>
+		<div layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+			<button type="submit" md-raised-button color="primary" [disabled]="!roomForm.valid">Save</button>
+			<button type="button" md-raised-button color="warn" (click)="dialogRef.close('cancel')">Cancel</button>
+		</div>
+	</md-card-actions>
+</md-card>
+</form>
