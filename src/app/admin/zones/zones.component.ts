@@ -14,25 +14,24 @@ import { ZoneService } from './zones.service';
 export class ZonesComponent implements OnInit {
   zones: Observable<Zone[]>;
 	dialogRef: MdDialogRef<ZonesCreateComponent>;
-  
+
   constructor(
     private zoneService: ZoneService,
     public dialog: MdDialog,
     public viewContainerRef: ViewContainerRef
     ) {}
-  
+
   ngOnInit() {
     this.zones = this.zoneService.zones;
-    
     this.zoneService.loadAll();
   }
-  
 
-  
+
+
   deleteZone(zoneId: number) {
     this.zoneService.remove(zoneId);
   }
-  
+
   openDialog() {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.viewContainerRef;
@@ -44,6 +43,7 @@ export class ZonesComponent implements OnInit {
     });
   }
   openDialogEdit(zone:Zone) {
+   //   console.log("edit called", zone);
     let config = new MdDialogConfig();
     config.viewContainerRef = this.viewContainerRef;
     this.dialogRef = this.dialog.open(ZonesCreateComponent, config);
@@ -52,6 +52,6 @@ export class ZonesComponent implements OnInit {
       this.dialogRef = null;
     });
   }
-  
+
 
 }

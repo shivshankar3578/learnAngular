@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Zone One updated",
+    "key": "a6060210-fd88-11e6-99d0-173308e72d78",
+    "id": 1,
+    "createdAt": "2017-02-28T07:36:42.000Z",
+    "updatedAt": "2017-03-01T13:17:27.000Z"
+  },
+  {
+    "name": "Zone Two",
+    "key": "4ba15000-fd9b-11e6-97eb-f77ee7f86ce5",
+    "id": 2,
+    "createdAt": "2017-02-28T09:50:11.000Z",
+    "updatedAt": "2017-03-01T06:51:04.000Z"
+  },
+  {
+    "name": "New Zone",
+    "key": "207566a0-fe81-11e6-bdb8-37af0c0813b1",
+    "id": 3,
+    "createdAt": "2017-03-01T13:15:23.000Z",
+    "updatedAt": "2017-03-01T13:15:23.000Z"
+  }
+]

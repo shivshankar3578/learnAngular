@@ -11,7 +11,7 @@ import { ZoneService } from './zones.service';
 	styleUrls: ['./zones-create.component.css']
 })
 export class ZonesCreateComponent implements OnInit {
-	public zoneForm: FormGroup; 
+	public zoneForm: FormGroup;
 	public isEdit: boolean;
 	private zone: Zone;
 	constructor(
@@ -24,6 +24,7 @@ export class ZonesCreateComponent implements OnInit {
 
 	ngOnInit() {
 		this.zone = this.zoneService.zone;
+		// console.log("zone oninit", this.zone)
 		if(this.zone.id){
 			this.isEdit = true;
 			this.loadForm();
@@ -33,12 +34,14 @@ export class ZonesCreateComponent implements OnInit {
 		}
 	}
 	loadForm(){
+		// console.log("loadfrom called")
 		this.zoneForm = new FormGroup({
 			name: new FormControl(this.zone.name, [<any>Validators.required, <any>Validators.minLength(5)]),
 			key: new FormControl( this.zone.key, [<any>Validators.required]),
 		});
 	}
 	onSubmit(model: Zone, isValid: boolean) {
+		// console.log("model submit called", )
 		if(!this.isEdit){
 			this.zoneService.create(model);
 		}else{

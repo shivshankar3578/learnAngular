@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http,Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map';
@@ -14,20 +14,27 @@ export class ZoneService {
   private dataStore: {
     zones: Zone[]
   };
+  createAuthorizationHeader(headers: Headers) {
+     headers.append('Authorization', `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaXNzdWVkIjoiMjAxNy0wMi0yMlQxMjo1OTowOFoifQ.5VpQYkEECi4HWzT-VJVDQ_63XPH2RPP1DHDCDHjW8JI`);
+  }
   zone : Zone;
 
   constructor(private http: Http) {
-    this.baseUrl = 'http://localhost:1338';
+    this.baseUrl = 'http://192.168.2.37:3000';
     this.dataStore = { zones: [] };
     this._zones = <BehaviorSubject<Zone[]>>new BehaviorSubject([]);
     this.zones = this._zones.asObservable();
   }
 
   loadAll() {
-    this.http.get(`${this.baseUrl}/zones`).map(response => response.json()).subscribe(data => {
-      this.dataStore.zones = data.items;
+     let headers = new Headers();
+     this.createAuthorizationHeader(headers);
+    //this.http.get(window.location.pathname+'/zones.json').map(response => response.json())
+    this.http.get(`${this.baseUrl}/zones`, {headers: headers}).map(response => response.json())
+    .subscribe(data => {
+      this.dataStore.zones = data;
       this._zones.next(Object.assign({}, this.dataStore).zones);
-    }, error => console.log('Could not load zones.'));
+   }, error => console.log('Could not load zones.', error));
   }
 
   load(id: number | string) {
@@ -50,26 +57,39 @@ export class ZoneService {
   }
 
   create(zone: Zone) {
-    this.http.post(`${this.baseUrl}/zones`, JSON.stringify(zone))
+   //   console.log("zone create called", zone)
+     let headers = new Headers();
+     this.createAuthorizationHeader(headers);
+     headers.append("Content-Type", 'application/json');
+    this.http.post(`${this.baseUrl}/zones`, JSON.stringify(zone), {headers: headers})
       .map(response => response.json()).subscribe(data => {
         this.dataStore.zones.push(data);
+        console.log('res', data);
         this._zones.next(Object.assign({}, this.dataStore).zones);
-      }, error => console.log('Could not create zone.'));
+     }, error => console.log('Could not create zone.', error));
   }
 
   update(zone: Zone) {
-    this.http.put(`${this.baseUrl}/zones/${zone.id}`, JSON.stringify(zone))
+     console.log("zone update called", zone)
+     let headers = new Headers();
+     this.createAuthorizationHeader(headers);
+     headers.append("Content-Type", 'application/json');
+    this.http.put(`${this.baseUrl}/zones/${zone.id}`,  JSON.stringify(zone),{headers: headers})
       .map(response => response.json()).subscribe(data => {
+         console.log('update res', data)
         this.dataStore.zones.forEach((t, i) => {
           if (t.id === data.id) { this.dataStore.zones[i] = data; }
         });
 
         this._zones.next(Object.assign({}, this.dataStore).zones);
-      }, error => console.log('Could not update zone.'));
+     }, error => console.log('Could not update zone.', error));
   }
 
   remove(zoneId: number) {
-    this.http.delete(`${this.baseUrl}/zones/${zoneId}`).subscribe(response => {
+     console.log("zone remove called", zoneId)
+     let headers = new Headers();
+     this.createAuthorizationHeader(headers);
+    this.http.delete(`${this.baseUrl}/zones/${zoneId}`,{headers: headers}).subscribe(response => {
       this.dataStore.zones.forEach((t, i) => {
         if (t.id === zoneId) { this.dataStore.zones.splice(i, 1); }
       });

@@ -1,0 +1,58 @@
+[
+  {
+    "zone": 1,
+    "name": "Room one",
+    "type": "static",
+    "properties": null,
+    "lastActivityTime": "2017-03-01T13:09:09.000Z",
+    "turnPassSec": null,
+    "distroyAfter": null,
+    "maxUsers": 6,
+    "isTurnBasedRoom": false,
+    "id": 1,
+    "createdAt": "2017-02-28T07:48:54.000Z",
+    "updatedAt": "2017-03-01T13:09:09.000Z"
+  },
+  {
+    "zone": 1,
+    "name": "Room two",
+    "type": "static",
+    "properties": null,
+    "lastActivityTime": "2017-03-01T13:09:27.000Z",
+    "turnPassSec": null,
+    "distroyAfter": null,
+    "maxUsers": 6,
+    "isTurnBasedRoom": false,
+    "id": 2,
+    "createdAt": "2017-02-28T07:49:02.000Z",
+    "updatedAt": "2017-03-01T13:09:27.000Z"
+  },
+  {
+    "zone": 2,
+    "name": "zone2 room",
+    "type": "static",
+    "properties": null,
+    "lastActivityTime": "2017-03-01T06:48:56.000Z",
+    "turnPassSec": null,
+    "distroyAfter": null,
+    "maxUsers": 6,
+    "isTurnBasedRoom": false,
+    "id": 5,
+    "createdAt": "2017-03-01T06:48:56.000Z",
+    "updatedAt": "2017-03-01T06:48:56.000Z"
+  },
+  {
+    "zone": 2,
+    "name": "test2",
+    "type": "static",
+    "properties": null,
+    "lastActivityTime": "2017-03-01T12:53:31.000Z",
+    "turnPassSec": null,
+    "distroyAfter": null,
+    "maxUsers": 5,
+    "isTurnBasedRoom": false,
+    "id": 6,
+    "createdAt": "2017-03-01T12:53:31.000Z",
+    "updatedAt": "2017-03-01T12:53:31.000Z"
+  }
+]

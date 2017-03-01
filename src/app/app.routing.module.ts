@@ -11,17 +11,17 @@ const appRoutes: Routes = [
 	  redirectTo: '/home',
 	  pathMatch: 'full'
 	},
-  { 
-  	path: 'login', 
-  	component: LoginComponent 
+  {
+  	path: 'login',
+  	component: LoginComponent
+  },
+  {
+  	path: 'home',
+  	component: HomeComponent
   },
   { 
-  	path: 'home', 
-  	component: HomeComponent 
-  },
-  { 
-  	path: '**', 
-  	component: PageNotFindComponent 
+  	path: '**',
+  	component: PageNotFindComponent
   }
 ];
 

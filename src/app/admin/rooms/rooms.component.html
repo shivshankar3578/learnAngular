@@ -8,24 +8,24 @@
 			<button md-mini-fab (click)="openDialog()" color="primary"><md-icon class="md-24">add</md-icon></button>
 
 		</section>
-	</md-card-title>  
+	</md-card-title>
 	<md-card-content>
 		<md-card>
-			<md-card-title>{{title}}</md-card-title>   
+			<md-card-title>{{title}}</md-card-title>
 			<md-card-content>
 				<table class="md-data-table">
 					<thead>
 						<tr>
-							<th class="md-text-cell">Zone</th>
+							<th class="md-text-cell">Room</th>
 							<th class="md-text-cell">Name</th>
 							<th class="md-text-cell">User Limit</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr *ngFor="let item of rooms | async">
-							<td class="md-text-cell">{{item.zone.name}} : {{item.zone.key}}</td>
 							<td class="md-text-cell">{{item.name}}</td>
-							<td class="md-text-cell">{{item.users_limit}}</td>
+							<td class="md-text-cell">{{item.type}}</td>
+							<td class="md-text-cell">{{item.maxUsers}}</td>
 							<td>
 								<button md-icon-button [md-menu-trigger-for]="menu">
 									<md-icon>more_vert</md-icon>

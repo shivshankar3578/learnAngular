@@ -10,7 +10,7 @@ const roomsRoutes: Routes = [
     component: AdminComponent,
     canActivate: [AuthGuard],
     children: [
-          { path: 'rooms', component: RoomsComponent },
+          { path: 'zones/:zoneId/rooms', component: RoomsComponent },
         ],
   }
 ];

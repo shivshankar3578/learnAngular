@@ -17,7 +17,7 @@ export class RoomsCreateComponent implements OnInit {
 	public roomForm: FormGroup;
 	public isEdit: boolean;
 	private room: Room;
-	private selectedZone: Zone;
+	private selectedZone:  Zone;
 	zones: Observable<Zone[]>;
 	constructor(
 		private formBuilder: FormBuilder,
@@ -31,23 +31,25 @@ export class RoomsCreateComponent implements OnInit {
 	ngOnInit() {
 		// load all the zones
 		this.zones = this.zoneService.zones;
-    this.zoneService.loadAll();
-
+    	this.zoneService.loadAll();
 		this.room = this.roomService.room;
 		if(this.room.id){
 			this.isEdit = true;
-			//this.selectedZone = this.room.zone;
+			this.selectedZone = this.room.zone;
 			this.loadForm();
 		}else{
 			this.isEdit = false;
 			this.loadForm();
 		}
 	}
+
 	loadForm(){
+		console.log("loadform called", this.room)
 		this.roomForm = new FormGroup({
-			zone: new FormControl((this.room.zone)?this.room.zone + ' <' + this.room.zone + '>':'', [<any>Validators.required]),
+			zone: new FormControl((this.room.zone)?this.room.zone:'', [<any>Validators.required]),
 			name: new FormControl(this.room.name, [<any>Validators.required, <any>Validators.minLength(5)]),
-			users_limit: new FormControl( this.room.users_limit, [<any>Validators.required]),
+			type: new FormControl(this.room.type, [<any>Validators.required]),
+			maxUsers: new FormControl( this.room.maxUsers, [<any>Validators.required]),
 		});
 	}
 	onSubmit(model: Room, isValid: boolean) {
@@ -56,7 +58,7 @@ export class RoomsCreateComponent implements OnInit {
 			this.roomService.create(model);
 		}else{
 			const room = Object.assign(this.room, model);
-			room.zone = this.selectedZone.id;
+			room.zone = this.selectedZone;
 			this.roomService.update(room);
 		}
 		return this.dialogRef.close('success');

@@ -6,49 +6,61 @@
 			<table style="width: 100%" cellspacing="0">
 				<tr>
 					<td>
-						<div class="dropdown" (mouseleave)="dropdown = false;" (mouseenter)="(zone.focused)?dropdown = true:''">
+						<md-select  mdInput   [(ngModel)]="selectedZone" formControlName="zone"  id="zone" name="zone"  placeholder="zone">
+						  	<md-option *ngFor="let item of zones | async" [value]="item.id">
+							 {{item.name}}
+						  	</md-option>
+				  	</md-select>
+						<!-- <div class="dropdown" (mouseleave)="dropdown = false;" (mouseenter)="(zone.focused)?dropdown = false:''">
 							<md-input-container>
-							   <input mdInput formControlName="zone" #zone placeholder="Select Zone" ngModel>
+							<input mdInput formControlName="zone" #zone placeholder="Select Zone" style="width: 100%">
 							</md-input-container>
-
 							<div class="dropdown-menu">
-								<md-card *ngIf="(dropdown || zone.focused)">
+								<md-card>
 									<md-list>
-										<md-list-item (click)="selectZone(zone, item)" *ngFor="let item of zones | async">{{item.name  + ' <' +item.key+'>'}}</md-list-item>
+										<md-list-item (click)="selectZone(zone, item)" *ngFor="let item of zones | async">{{item.name  + ' <' +item.key+'>'}} </md-list-item>
 									</md-list>
 								</md-card>
 							</div>
-						</div>
-						<small [hidden]="roomForm.controls.zone.valid || (roomForm.controls.name.pristine && !submitted)">
+						</div> -->
+						<!-- <small [hidden]="roomForm.controls.zone.valid || (roomForm.controls.name.pristine && !submitted)">
 							Name is required (minimum 5 characters).
-						</small>
+						</small> -->
 					</td>
 				</tr><tr>
 				<td>
 					<md-input-container>
-						<input mdInput formControlName="name"  placeholder="Room Name"  ngModel>
+					<input mdInput formControlName="name"  placeholder="Room Name" style="width: 100%">
 					</md-input-container>
 					<small [hidden]="roomForm.controls.name.valid || (roomForm.controls.name.pristine && !submitted)">
 						Name is required (minimum 5 characters).
 					</small>
 				</td>
-			</tr>
-			<tr>
+			</tr><tr>
+				</tr><tr>
 				<td>
 					<md-input-container>
-						<input mdInput formControlName="users_limit"  placeholder="Users Limit"  ngModel>
+					<input mdInput formControlName="type"  placeholder="Room Type" style="width: 100%">
 					</md-input-container>
-
-					<small [hidden]="roomForm.controls.users_limit.valid || (roomForm.controls.name.pristine && !submitted)">
+					<!-- <small [hidden]="roomForm.controls.type.valid || (roomForm.controls.type.pristine && !submitted)">
+						type is required
+					</small> -->
+				</td>
+			</tr><tr>
+				<td>
+					<md-input-container>
+					<input mdInput formControlName="maxUsers"  placeholder="Users Limit" style="width: 100%">
+					</md-input-container>
+					<!-- <small [hidden]="roomForm.controls.users_limit.valid || (roomForm.controls.name.pristine && !submitted)">
 						Users limit is required.
-					</small>
+					</small> -->
 				</td>
 			</tr>
 		</table>
 	</md-card-content>
 	<md-card-actions>
 		<div layout="row" layout-sm="column" layout-align="end center" layout-wrap>
-			<button type="submit" md-raised-button color="primary" [disabled]="!roomForm.valid">Save</button>
+			<button type="submit" md-raised-button color="primary">Save</button>
 			<button type="button" md-raised-button color="warn" (click)="dialogRef.close('cancel')">Cancel</button>
 		</div>
 	</md-card-actions>
